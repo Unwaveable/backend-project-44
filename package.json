@@ -1,6 +1,7 @@
 {
   "name": "hexletcode",
   "version": "1.0.0",
+  "type": "module",
   "description": "[![Actions Status](https://github.com/Unwaveable/backend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Unwaveable/backend-project-44/actions)",
   "homepage": "https://github.com/Unwaveable/backend-project-44#readme",
   "bugs": {
@@ -10,15 +11,17 @@
     "type": "git",
     "url": "git+https://github.com/Unwaveable/backend-project-44.git"
   },
+  "dependencies": {
+    "eslint": "^9.18.0",
+    "lodash": "^4.17.21"
+  },
   "license": "ISC",
   "author": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "eslint": "^9.18.0",
-    "lodash": "^4.17.21"
+  "bin": {
+    "brain-games": "bin/brain-games.js"
   }
 }
