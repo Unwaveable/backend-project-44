@@ -18,7 +18,7 @@ for (let countUserWins = 0; countUserWins < correctAnswersToWin; ) {
     countUserWins += 1;
   } else {
     console.log(
-      `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}\nLet's' try again, ${userName}!`
+      `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's' try again, ${userName}!`
     );
     break;
   }
