@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from "readline-sync";
-import { getAndPrintUserName } from "./src/cli.js";
-
-const correctAnswersToWin = 3;
+import { getAndPrintUserName, correctAnswersToWin } from "./src/cli.js";
 
 const userName = getAndPrintUserName();
 console.log('Answer "yes" if the number is even, otherwise answer "no".');
