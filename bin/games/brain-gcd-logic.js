@@ -9,22 +9,18 @@ import {
   makeRandomNum,
 } from "../src/index.js";
 
-export function playBrainCalc() {
+export function playBrainGcd() {
   const userName = getAndPrintUserName();
-  printGameRules("What is the result of the expression?");
+  printGameRules("Find the greatest common divisor of given numbers.");
 
   for (countUserWins; countUserWins < correctAnswersToWin; ) {
-    let calculationDigit = ["-", "+", "*"];
-    let randomDigit = calculationDigit[makeRandomNum(0, 2)];
     let firstRandomNum = makeRandomNum(0, 10);
     let secondRandomNum = makeRandomNum(0, 10);
-    let correctAnswer = resultOfOperation(firstRandomNum, secondRandomNum, randomDigit).toString();
 
-    console.log(`Question: ${firstRandomNum} ${randomDigit} ${secondRandomNum}`);
+    let correctAnswer = findNod(firstRandomNum, secondRandomNum);
 
+    console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
     let userAnswer = askUserAnswer();
-    
-
     let userCanPlay = checkUserAnswer(userAnswer, correctAnswer, userName);
     if (!userCanPlay) {
       break;
@@ -33,13 +29,10 @@ export function playBrainCalc() {
   userWin(userName);
 }
 
-function resultOfOperation(num1, num2, digit) {
-  switch (digit) {
-    case "-":
-      return num1 - num2;
-    case "*":
-      return num1 * num2;
-    case "+":
-      return num1 + num2;
+function findNod(firstRandomNum, secondRandomNum) {
+  if (secondRandomNum !== 0) {
+    const k = firstRandomNum % secondRandomNum;
+    return findNod(secondRandomNum, k);
   }
+  return firstRandomNum.toString();
 }
