@@ -7,16 +7,17 @@ import {
   checkUserAnswer,
   countUserWins,
   userWin,
+  makeRandomNum,
 } from "../src/index.js";
 
-const userName = getAndPrintUserName();
 playBrainEven();
 
 function playBrainEven() {
+  const userName = getAndPrintUserName();
   printGameRules('Answer "yes" if the number is even, otherwise answer "no".');
 
   for (countUserWins; countUserWins < correctAnswersToWin; ) {
-    let num = Math.floor(Math.random() * 101);
+    let num = makeRandomNum(1, 100);
     console.log(`Question: ${num}`);
 
     let userAnswer = askUserAnswer();

@@ -28,3 +28,7 @@ export function userWin(userName) {
     console.log(`Congratulations, ${userName}!`);
   }
 }
+
+export function makeRandomNum(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

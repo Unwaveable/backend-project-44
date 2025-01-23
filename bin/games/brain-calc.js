@@ -7,20 +7,31 @@ import {
   checkUserAnswer,
   countUserWins,
   userWin,
+  makeRandomNum,
 } from "../src/index.js";
 
 playBrainCalc();
-const userName = getAndPrintUserName();
 
 function playBrainCalc() {
+  const userName = getAndPrintUserName();
   printGameRules("What is the result of the expression?");
 
   for (countUserWins; countUserWins < correctAnswersToWin; ) {
-    let num = Math.floor(Math.random() * 101);
-    console.log(`Question: ${num}`);
+    let calculationDigit = ["-", "+", "*"];
+    let randomDigit = calculationDigit[makeRandomNum(0, 2)];
+    let firstRandomNum = makeRandomNum(0, 10);
+    let secondRandomNum = makeRandomNum(0, 10);
+
+    console.log(
+      `Question: ${firstRandomNum} ${randomDigit} ${secondRandomNum}`
+    );
 
     let userAnswer = askUserAnswer();
-    let correctAnswer = num % 2 === 0 ? "yes" : "no";
+    let correctAnswer = resultOfOperation(
+      firstRandomNum,
+      secondRandomNum,
+      randomDigit
+    ).toString();
 
     let userCanPlay = checkUserAnswer(userAnswer, correctAnswer, userName);
     if (!userCanPlay) {
@@ -28,4 +39,18 @@ function playBrainCalc() {
     }
   }
   userWin(userName);
+}
+
+function resultOfOperation(num1, num2, digit) {
+  switch (digit) {
+    case "-":
+      return num1 - num2;
+      break;
+    case "*":
+      return num1 * num2;
+      break;
+    case "+":
+      return num1 + num2;
+      break;
+  }
 }
