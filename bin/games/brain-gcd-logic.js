@@ -16,10 +16,10 @@ export function playBrainGcd() {
   for (countUserWins; countUserWins < correctAnswersToWin; ) {
     let firstRandomNum = makeRandomNum(0, 10);
     let secondRandomNum = makeRandomNum(0, 10);
-
     let correctAnswer = findNod(firstRandomNum, secondRandomNum);
 
     console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
+    
     let userAnswer = askUserAnswer();
     let userCanPlay = checkUserAnswer(userAnswer, correctAnswer, userName);
     if (!userCanPlay) {
