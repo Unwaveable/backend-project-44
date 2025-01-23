@@ -1,26 +1,31 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
-import { getAndPrintUserName, correctAnswersToWin } from "../src/cli.js";
+import { getAndPrintUserName } from "../src/cli.js";
+import {
+  correctAnswersToWin,
+  askUserAnswer,
+  printGameRules,
+  checkUserAnswer,
+  countUserWins,
+  userWin,
+} from "../src/index.js";
 
 const userName = getAndPrintUserName();
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
+playBrainEven();
 
-for (let countUserWins = 0; countUserWins < correctAnswersToWin; ) {
-  let num = Math.floor(Math.random() * 101);
-  console.log(`Question: ${num}`);
-  let userAnswer = readlineSync.question("Your answer: ");
-  let correctAnswer = num % 2 === 0 ? "yes" : "no";
+function playBrainEven() {
+  printGameRules('Answer "yes" if the number is even, otherwise answer "no".');
 
-  if (userAnswer === correctAnswer) {
-    console.log("Correct!");
-    countUserWins += 1;
-  } else {
-    console.log(
-      `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's' try again, ${userName}!`
-    );
-    break;
+  for (countUserWins; countUserWins < correctAnswersToWin; ) {
+    let num = Math.floor(Math.random() * 101);
+    console.log(`Question: ${num}`);
+
+    let userAnswer = askUserAnswer();
+    let correctAnswer = num % 2 === 0 ? "yes" : "no";
+
+    let userCanPlay = checkUserAnswer(userAnswer, correctAnswer, userName);
+    if (!userCanPlay) {
+      break;
+    }
   }
-  if (countUserWins === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  userWin(userName);
 }
