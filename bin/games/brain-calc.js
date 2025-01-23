@@ -45,12 +45,9 @@ function resultOfOperation(num1, num2, digit) {
   switch (digit) {
     case "-":
       return num1 - num2;
-      break;
     case "*":
       return num1 * num2;
-      break;
     case "+":
       return num1 + num2;
-      break;
   }
 }
