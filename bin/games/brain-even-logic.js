@@ -10,9 +10,7 @@ import {
   makeRandomNum,
 } from "../src/index.js";
 
-playBrainEven();
-
-function playBrainEven() {
+export function playBrainEven() {
   const userName = getAndPrintUserName();
   printGameRules('Answer "yes" if the number is even, otherwise answer "no".');
 

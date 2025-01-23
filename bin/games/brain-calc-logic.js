@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { getAndPrintUserName } from "../src/cli.js";
 import {
   correctAnswersToWin,
@@ -10,9 +9,7 @@ import {
   makeRandomNum,
 } from "../src/index.js";
 
-playBrainCalc();
-
-function playBrainCalc() {
+export function playBrainCalc() {
   const userName = getAndPrintUserName();
   printGameRules("What is the result of the expression?");
 
