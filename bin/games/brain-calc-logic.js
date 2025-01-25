@@ -1,7 +1,7 @@
 import { makeRandomNum, gameEngine } from "../src/index.js";
 
 export function playBrainCalc() {
-  const gameRules = "What is the result of the expression?";
+  const gameRules = 'What is the result of the expression?';
   gameEngine(gameRules, gameLogic);
 }
 
