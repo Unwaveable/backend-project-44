@@ -18,7 +18,9 @@ export function checkUserAnswer(userAnswer, correctAnswer, userName) {
     countUserWins += 1;
     return true;
   } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's' try again, ${userName}!`);
+    console.log(
+      `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's' try again, ${userName}!`
+    );
     return false;
   }
 }
@@ -29,6 +31,6 @@ export function userWin(userName) {
   }
 }
 
-export function makeRandomNum(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+export function makeRandomNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

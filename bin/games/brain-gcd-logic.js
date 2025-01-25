@@ -14,8 +14,8 @@ export function playBrainGcd() {
   printGameRules("Find the greatest common divisor of given numbers.");
 
   for (countUserWins; countUserWins < correctAnswersToWin; ) {
-    let firstRandomNum = makeRandomNum(0, 10);
-    let secondRandomNum = makeRandomNum(0, 10);
+    let firstRandomNum = makeRandomNum(1, 15);
+    let secondRandomNum = makeRandomNum(1, 15);
     let correctAnswer = findNod(firstRandomNum, secondRandomNum);
 
     console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
