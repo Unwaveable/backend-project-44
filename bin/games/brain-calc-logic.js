@@ -1,18 +1,24 @@
-import { makeRandomNum, gameEngine } from "../src/index.js";
+import { makeRandomNum, gameEngine } from '../src/index.js';
 
 function resultOfOperation(num1, num2, digit) {
+  let result = 0;
   switch (digit) {
-    case "-":
-      return num1 - num2;
-    case "*":
-      return num1 * num2;
-    case "+":
-      return num1 + num2;
+    case '-':
+      result = num1 - num2;
+      break;
+    case '*':
+      result = num1 * num2;
+      break;
+    case '+':
+      result = num1 + num2;
+      break;
+    default: result = 'Error';
   }
+  return result;
 }
 
 function gameLogic() {
-  const calculationDigit = ["-", "+", "*"];
+  const calculationDigit = ['-', '+', '*'];
   const randomDigit = calculationDigit[makeRandomNum(0, 2)];
   const firstRandomNum = makeRandomNum(0, 10);
   const secondRandomNum = makeRandomNum(0, 10);
@@ -26,6 +32,6 @@ function gameLogic() {
 }
 
 export default function playBrainCalc() {
-  const gameRules = "What is the result of the expression?";
+  const gameRules = 'What is the result of the expression?';
   gameEngine(gameRules, gameLogic);
 }

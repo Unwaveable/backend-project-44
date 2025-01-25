@@ -14,13 +14,13 @@ function gameLogic() {
   const correctAnswer = progressionArray[hiddenItem].toString();
   progressionArray[hiddenItem] = '..';
   const correctAsnw = {
-    question: `Question: ${progressionArray.join(" ")}`,
+    question: `Question: ${progressionArray.join(' ')}`,
     answer: correctAnswer,
   };
   return correctAsnw;
 }
 
 export default function playBrainProgression() {
-  const gameRules = "What number is missing in the progression?";
+  const gameRules = 'What number is missing in the progression?';
   gameEngine(gameRules, gameLogic);
 }

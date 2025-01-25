@@ -1,8 +1,8 @@
 install: #установить модули
-		npm ci
+	npm ci
 brain-games: #запуск программы
-		node bin/games/brain-games.js
+	node bin/games/brain-games.js
 publish: #паблиш
-		npm publish --dry-run
+	npm publish --dry-run
 lint: #запуск eslint
-		npx eslint .
+	npx eslint .

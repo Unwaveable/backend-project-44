@@ -1,10 +1,10 @@
-import { makeRandomNum, gameEngine } from "../src/index.js";
+import { makeRandomNum, gameEngine } from '../src/index.js';
 
 function isPrime(numToQuess) {
-  for (let i = 2; i < numToQuess; i++) {
-    if (numToQuess % i === 0) return "no";
+  for (let i = 2; i < numToQuess; i += 1) {
+    if (numToQuess % i === 0) return 'no';
   }
-  return "yes";
+  return 'yes';
 }
 
 function gameLogic() {

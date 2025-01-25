@@ -1,4 +1,4 @@
-import { makeRandomNum, gameEngine } from "../src/index.js";
+import { makeRandomNum, gameEngine } from '../src/index.js';
 
 function findNod(firstRandomNum, secondRandomNum) {
   if (secondRandomNum !== 0) {

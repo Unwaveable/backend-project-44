@@ -9,7 +9,7 @@ function printGameRules(rules) {
 }
 
 function askUserAnswer() {
-  const userAnswer = readlineSync.question("Your answer: ");
+  const userAnswer = readlineSync.question('Your answer: ');
   return userAnswer;
 }
 
@@ -18,10 +18,10 @@ function checkUserAnswer(userAnswer, answer, userName) {
     console.log('Correct!');
     countUserWins += 1;
     return true;
-  } 
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`);
-    return false;
   }
+  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`);
+  return false;
+}
 
 function userWin(userName) {
   if (countUserWins === 3) {
@@ -33,7 +33,7 @@ export function gameEngine(gameRules, gameLogic) {
   const userName = getAndPrintUserName();
   printGameRules(gameRules);
 
-  for (countUserWins; countUserWins < correctAnswersToWin; ) {
+  for (countUserWins; countUserWins < correctAnswersToWin;) {
     const makeLogic = gameLogic();
     const correctAnswer = makeLogic.answer.toString();
 
