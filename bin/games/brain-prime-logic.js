@@ -1,9 +1,10 @@
 import { makeRandomNum, gameEngine } from "../src/index.js";
 
-export function playBrainPrime() {
-  const gameRules =
-    'Answer "yes" if given number is prime. Otherwise answer "no".';
-  gameEngine(gameRules, gameLogic);
+function isPrime(numToQuess) {
+  for (let i = 2; i < numToQuess; i++) {
+    if (numToQuess % i === 0) return "no";
+  }
+  return "yes";
 }
 
 function gameLogic() {
@@ -15,9 +16,7 @@ function gameLogic() {
   return correctAsnw;
 }
 
-function isPrime(numToQuess) {
-  for (let i = 2; i < numToQuess; i++) {
-    if (numToQuess % i === 0) return "no";
-  }
-  return "yes";
+export default function playBrainPrime() {
+  const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  gameEngine(gameRules, gameLogic);
 }

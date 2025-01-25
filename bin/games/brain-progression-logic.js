@@ -1,9 +1,4 @@
-import { makeRandomNum, gameEngine } from "../src/index.js";
-
-export function playBrainProgression() {
-  const gameRules = "What number is missing in the progression?";
-  gameEngine(gameRules, gameLogic);
-}
+import { makeRandomNum, gameEngine } from '../src/index.js';
 
 function gameLogic() {
   const progressionLength = makeRandomNum(5, 10);
@@ -15,12 +10,17 @@ function gameLogic() {
     progressionArray.push(progressionArray[i] + progressionStep);
   }
 
-  let hiddenItem = Math.floor(Math.random() * progressionArray.length);
-  let correctAnswer = progressionArray[hiddenItem].toString();
-  progressionArray[hiddenItem] = "..";
+  const hiddenItem = Math.floor(Math.random() * progressionArray.length);
+  const correctAnswer = progressionArray[hiddenItem].toString();
+  progressionArray[hiddenItem] = '..';
   const correctAsnw = {
     question: `Question: ${progressionArray.join(" ")}`,
     answer: correctAnswer,
   };
   return correctAsnw;
+}
+
+export default function playBrainProgression() {
+  const gameRules = "What number is missing in the progression?";
+  gameEngine(gameRules, gameLogic);
 }

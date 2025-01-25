@@ -1,8 +1,11 @@
 import { makeRandomNum, gameEngine } from "../src/index.js";
 
-export function playBrainGcd() {
-  const gameRules = 'Find the greatest common divisor of given numbers';
-  gameEngine(gameRules, gameLogic);
+function findNod(firstRandomNum, secondRandomNum) {
+  if (secondRandomNum !== 0) {
+    const k = firstRandomNum % secondRandomNum;
+    return findNod(secondRandomNum, k);
+  }
+  return firstRandomNum.toString();
 }
 
 function gameLogic() {
@@ -16,10 +19,7 @@ function gameLogic() {
   return correctAsnw;
 }
 
-function findNod(firstRandomNum, secondRandomNum) {
-  if (secondRandomNum !== 0) {
-    const k = firstRandomNum % secondRandomNum;
-    return findNod(secondRandomNum, k);
-  }
-  return firstRandomNum.toString();
+export default function playBrainGcd() {
+  const gameRules = 'Find the greatest common divisor of given numbers';
+  gameEngine(gameRules, gameLogic);
 }

@@ -1,3 +1,4 @@
 #!/usr/bin/env node
-import { playBrainCalc } from "./games/brain-calc-logic.js";
+import playBrainCalc from './games/brain-calc-logic.js';
+
 playBrainCalc();

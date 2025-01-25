@@ -1,8 +1,14 @@
 import { makeRandomNum, gameEngine } from "../src/index.js";
 
-export function playBrainCalc() {
-  const gameRules = 'What is the result of the expression?';
-  gameEngine(gameRules, gameLogic);
+function resultOfOperation(num1, num2, digit) {
+  switch (digit) {
+    case "-":
+      return num1 - num2;
+    case "*":
+      return num1 * num2;
+    case "+":
+      return num1 + num2;
+  }
 }
 
 function gameLogic() {
@@ -13,18 +19,13 @@ function gameLogic() {
 
   const correctAsnw = {
     question: `Question: ${firstRandomNum} ${randomDigit} ${secondRandomNum}`,
-    answer: resultOfOperation(firstRandomNum, secondRandomNum, randomDigit)};
+    answer: resultOfOperation(firstRandomNum, secondRandomNum, randomDigit),
+  };
 
   return correctAsnw;
 }
 
-function resultOfOperation(num1, num2, digit) {
-  switch (digit) {
-    case "-":
-      return num1 - num2;
-    case "*":
-      return num1 * num2;
-    case "+":
-      return num1 + num2;
-  }
+export default function playBrainCalc() {
+  const gameRules = "What is the result of the expression?";
+  gameEngine(gameRules, gameLogic);
 }

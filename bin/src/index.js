@@ -1,8 +1,33 @@
-import readlineSync from "readline-sync";
-import { getAndPrintUserName } from "./cli.js";
+import readlineSync from 'readline-sync';
+import getAndPrintUserName from './cli.js';
 
 const correctAnswersToWin = 3;
 let countUserWins = 0;
+
+function printGameRules(rules) {
+  console.log(rules);
+}
+
+function askUserAnswer() {
+  const userAnswer = readlineSync.question("Your answer: ");
+  return userAnswer;
+}
+
+function checkUserAnswer(userAnswer, answer, userName) {
+  if (userAnswer === answer) {
+    console.log('Correct!');
+    countUserWins += 1;
+    return true;
+  } 
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`);
+    return false;
+  }
+
+function userWin(userName) {
+  if (countUserWins === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  }
+}
 
 export function gameEngine(gameRules, gameLogic) {
   const userName = getAndPrintUserName();
@@ -22,34 +47,6 @@ export function gameEngine(gameRules, gameLogic) {
     }
   }
   userWin(userName);
-}
-
-function printGameRules(rules) {
-  console.log(rules);
-}
-
-function askUserAnswer() {
-  let userAnswer = readlineSync.question("Your answer: ");
-  return userAnswer;
-}
-
-function checkUserAnswer(userAnswer, answer, userName) {
-  if (userAnswer === answer) {
-    console.log("Correct!");
-    countUserWins += 1;
-    return true;
-  } else {
-    console.log(
-      `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`
-    );
-    return false;
-  }
-}
-
-function userWin(userName) {
-  if (countUserWins === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
 }
 
 export function makeRandomNum(min, max) {
