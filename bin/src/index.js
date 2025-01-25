@@ -4,19 +4,19 @@ import { getAndPrintUserName } from "./cli.js";
 export const correctAnswersToWin = 3;
 export let countUserWins = 0;
 
-export function gameEngine(gameRules, makeQuestion, makeCorrectAnswer) {
+export function gameEngine(gameRules, gameLogic) {
   const userName = getAndPrintUserName();
   printGameRules(gameRules);
 
   for (countUserWins; countUserWins < correctAnswersToWin; ) {
-    const question = makeQuestion();
-    const answer = makeCorrectAnswer();
+    const makeLogic = gameLogic();
+    const correctAnswer = makeLogic.answer.toString();
 
-    console.log(`Question: ${question}`);
+    console.log(makeLogic.question);
 
     let userAnswer = askUserAnswer();
 
-    let userCanPlay = checkUserAnswer(userAnswer, answer, userName);
+    let userCanPlay = checkUserAnswer(userAnswer, correctAnswer, userName);
     if (!userCanPlay) {
       break;
     }

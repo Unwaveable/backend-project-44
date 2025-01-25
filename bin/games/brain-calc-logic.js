@@ -1,36 +1,21 @@
-import { getAndPrintUserName } from "../src/cli.js";
-import {
-  correctAnswersToWin,
-  askUserAnswer,
-  printGameRules,
-  checkUserAnswer,
-  countUserWins,
-  userWin,
-  makeRandomNum,
-} from "../src/index.js";
+import { makeRandomNum, gameEngine } from "../src/index.js";
 
 export function playBrainCalc() {
-  const userName = getAndPrintUserName();
-  printGameRules("What is the result of the expression?");
+  const gameRules = "What is the result of the expression?";
+  gameEngine(gameRules, gameLogic);
+}
 
-  for (countUserWins; countUserWins < correctAnswersToWin; ) {
-    let calculationDigit = ["-", "+", "*"];
-    let randomDigit = calculationDigit[makeRandomNum(0, 2)];
-    let firstRandomNum = makeRandomNum(0, 10);
-    let secondRandomNum = makeRandomNum(0, 10);
-    let correctAnswer = resultOfOperation(firstRandomNum, secondRandomNum, randomDigit).toString();
+function gameLogic() {
+  const calculationDigit = ["-", "+", "*"];
+  const randomDigit = calculationDigit[makeRandomNum(0, 2)];
+  const firstRandomNum = makeRandomNum(0, 10);
+  const secondRandomNum = makeRandomNum(0, 10);
 
-    console.log(`Question: ${firstRandomNum} ${randomDigit} ${secondRandomNum}`);
+  const correctAsnw = {
+    question: `Question: ${firstRandomNum} ${randomDigit} ${secondRandomNum}`,
+    answer: resultOfOperation(firstRandomNum, secondRandomNum, randomDigit)};
 
-    let userAnswer = askUserAnswer();
-    
-
-    let userCanPlay = checkUserAnswer(userAnswer, correctAnswer, userName);
-    if (!userCanPlay) {
-      break;
-    }
-  }
-  userWin(userName);
+  return correctAsnw;
 }
 
 function resultOfOperation(num1, num2, digit) {
